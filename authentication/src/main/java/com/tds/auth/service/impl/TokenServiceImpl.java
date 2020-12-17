@@ -54,7 +54,6 @@ public class TokenServiceImpl implements TokenService {
 
 	@Override
 	public ValidForm validateToken(String token) {
-		// this should validate for login user id who has requestd it with the token object user id as well
 		Token tokenObject = null;
 		try {
 			tokenObject = tokenDao.getToken(token);

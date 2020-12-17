@@ -1,7 +1,10 @@
 package com.tds.auth.form;
 
+import java.util.UUID;
+
 public class ExceptionForm {
 
+	private String errorId;
 	private String message;
 	private String errorDetail;
 	private boolean success;
@@ -10,8 +13,15 @@ public class ExceptionForm {
 		this.message = message;
 		this.errorDetail = errorDetail;
 		this.success = success;
+		this.errorId = UUID.randomUUID().toString().replace("-", "").substring(0, 10).toUpperCase();
 	}
 	
+	public String getErrorId() {
+		return errorId;
+	}
+	public void setErrorId(String errorId) {
+		this.errorId = errorId;
+	}
 	public String getMessage() {
 		return message;
 	}
@@ -29,6 +39,15 @@ public class ExceptionForm {
 	}
 	public void setSuccess(boolean success) {
 		this.success = success;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder message = new StringBuilder();
+		message.append("{ message :").append(this.message).append(" , errorId :").append(this.errorId)
+		.append(", errorDetail :").append(this.errorDetail).append(" , success : ")
+		.append(this.success).append("} ");
+		return message.toString();
 	}
 	
 	
